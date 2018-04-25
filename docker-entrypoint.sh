@@ -1,6 +1,6 @@
 #!/bin/bash
-set -eo pipefail
-shopt -s nullglob
+
+[[ $DEBUG ]] && set -x
 
 # if command starts with an option, prepend mysqld
 if [ "${1:0:1}" = '-' ]; then
@@ -64,6 +64,8 @@ if [ "$1" = 'mysqld' -a -z "$wantHelp" -a "$(id -u)" = '0' ]; then
 	DATADIR="$(_datadir "$@")"
 	mkdir -p "$DATADIR"
 	chown -R mysql:mysql "$DATADIR"
+        mkdir -pv /data/{data,logs,tmp}
+        chown -R mysql:mysql /data
 	exec gosu mysql "$BASH_SOURCE" "$@"
 fi
 
@@ -80,9 +82,9 @@ if [ "$1" = 'mysqld' -a -z "$wantHelp" ]; then
 			echo >&2 '  You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD'
 			exit 1
 		fi
-
-		mkdir -p "/data/{logs,tmp,data}"
-        chown mysql.mysql /data -R
+                mkdir -p "$DATADIR"
+		mkdir -pv /data/{logs,tmp,data}
+                chown mysql.mysql /data -R
 
 		echo 'Initializing database'
 		mysql_install_db --datadir="$DATADIR" --rpm
