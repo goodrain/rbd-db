@@ -3,6 +3,9 @@ LABEL creater="barnett"
 ENV MYSQL_VERSION=5.5.61
 ENV TZ=Asia/Shanghai
 ENV MYSQLC_MYSQLD_datadir=/data
+ENV MYSQLC_CLIENT_default-character-set=utf8
+ENV MYSQLC_MYSQLD_character_set_server=utf8
+ENV MYSQLC_MYSQL_default-character-set=utf8
 ADD docker-entrypoint.sh /run/docker-entrypoint.sh
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list; \
     rm -rf /etc/apt/sources.list.d/percona.list && apt-get update; \
