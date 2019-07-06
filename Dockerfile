@@ -2,6 +2,7 @@ FROM percona:5.5.61-stretch
 LABEL creater="barnett"
 ENV MYSQL_VERSION=5.5.61
 ENV TZ=Asia/Shanghai
+ENV MYSQLC_MYSQLD_datadir=/data
 ADD docker-entrypoint.sh /run/docker-entrypoint.sh
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list; \
     rm -rf /etc/apt/sources.list.d/percona.list && apt-get update; \
