@@ -1,6 +1,6 @@
-FROM percona:5.5.61-stretch
+FROM percona:5.7.23-stretch
 LABEL creater="barnett"
-ENV MYSQL_VERSION=5.5.61
+ENV MYSQL_VERSION=5.7.23
 ENV TZ=Asia/Shanghai
 ENV MYSQLC_MYSQLD_datadir=/data
 ENV MYSQLC_CLIENT_default-character-set=utf8
