@@ -8,6 +8,7 @@ ENV MYSQLC_CLIENT_default-character-set=utf8
 ENV MYSQLC_MYSQLD_character_set_server=utf8
 ENV MYSQLC_MYSQL_default-character-set=utf8
 ADD docker-entrypoint.sh /run/docker-entrypoint.sh
+ADD mysqld.cnf /etc/percona-server.conf.d/
 RUN rm -rf /etc/yum.repos.d/percona* \
     yum update && yum install wget net-tools -y; \
     wget -O /usr/local/bin/env2file -q https://github.com/barnettZQG/env2file/releases/download/0.1.1/env2file-linux; \
