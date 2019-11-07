@@ -15,7 +15,6 @@ RUN rm -rf /etc/yum.repos.d/percona* \
     cp /tmp/mysqld_exporter-0.12.1.linux-amd64/mysqld_exporter /usr/local/bin/; \
     chmod +x /usr/local/bin/mysqld_exporter; \
     chmod +rw /var/lib/mysql;
-USER 1001
 EXPOSE 3306
 VOLUME ["/var/lib/mysql", "/var/log/mysql"]
 # change ENTRYPOINT exec some custom command
