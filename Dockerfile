@@ -3,10 +3,6 @@ USER root
 LABEL creater="barnett"
 ENV MYSQL_VERSION=5.7.26
 ENV TZ=Asia/Shanghai
-ENV MYSQLC_MYSQLD_datadir=/data
-ENV MYSQLC_CLIENT_default-character-set=utf8
-ENV MYSQLC_MYSQLD_character_set_server=utf8
-ENV MYSQLC_MYSQL_default-character-set=utf8
 ADD docker-entrypoint.sh /run/docker-entrypoint.sh
 ADD mysqld.cnf /etc/percona-server.conf.d/
 RUN rm -rf /etc/yum.repos.d/percona* \
