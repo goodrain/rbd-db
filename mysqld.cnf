@@ -26,45 +26,50 @@ symbolic-links=0
 #log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 
-bind-address  = 0.0.0.0
-max_connections   = 3000
-max_connect_errors = 2000
-connect_timeout   = 5
-wait_timeout  = 28800
-interactive_timeout  = 28800
-max_allowed_packet  = 16M
-thread_cache_size  = 128
-sort_buffer_size  = 4M
-bulk_insert_buffer_size  = 16M
-tmp_table_size  = 32M
-max_heap_table_size  = 32M
+bind-address = 0.0.0.0
+max_connections=3000
+max_connect_errors=2000
+connect_timeout=5
+wait_timeout=3600
+skip-name-resolve
+interactive_timeout=28800
+max_allowed_packet=16M
+thread_cache_size=128
+sort_buffer_size=4M
+bulk_insert_buffer_size=16M
+tmp_table_size=32M
+max_heap_table_size=32M
+query_cache_size=40M
 
 # logbin
+gtid_mode=ON
+enforce_gtid_consistency=true
 server-id=2
-log_bin  = /var/lib/mysql/logbin
-log_bin_index  = /var/lib/mysql/logbin.index
-#sync_binlog  = 1
-expire_logs_days = 3
-max_binlog_size = 100M
+binlog_format=row 
+log_bin=/var/lib/mysql/logbin
+log_bin_index=/var/lib/mysql/logbin.index
+#sync_binlog=1
+expire_logs_days=3
+max_binlog_size=100M
 
 # * InnoDB
-innodb_log_file_size = 50M
-innodb_buffer_pool_size = 256M
-innodb_log_buffer_size = 8M
-innodb_file_per_table = 1
-innodb_open_files = 800
-innodb_io_capacity = 400
-innodb_flush_method = O_DIRECT
-binlog_format=row
 default_storage_engine=InnoDB
+innodb_buffer_pool_size=256M
+innodb_log_buffer_size=8M
+innodb_file_per_table=1
+innodb_open_files=800
+innodb_io_capacity=400
+innodb_flush_method=O_DIRECT
+binlog_format=row
+innodb_log_file_size=128M
 
 [client]
-default-character-set = utf8
+default-character-set= utf8
 
 [mysqld]
-character-set-server  = utf8
-collation-server      = utf8_general_ci
-character_set_server  = utf8
-collation_server      = utf8_general_ci
+character-set-server = utf8
+collation-server     = utf8_general_ci
+character_set_server = utf8
+collation_server     = utf8_general_ci
 
 
