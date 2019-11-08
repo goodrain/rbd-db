@@ -25,6 +25,7 @@ symbolic-links=0
 
 #log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
+log_warnings=0
 
 bind-address = 0.0.0.0
 max_connections=3000
