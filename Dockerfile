@@ -9,11 +9,6 @@ RUN rm -rf /etc/yum.repos.d/percona* \
     yum update && yum install wget net-tools -y; \
     wget -O /usr/local/bin/env2file -q https://github.com/barnettZQG/env2file/releases/download/0.1.1/env2file-linux; \
     chmod +x /run/docker-entrypoint.sh && chmod +x /usr/local/bin/env2file; \
-    wget -O /tmp/mysqld_exporter-0.12.1.linux-amd64.tar.gz -q https://github.com/prometheus/mysqld_exporter/releases/download/v0.12.1/mysqld_exporter-0.12.1.linux-amd64.tar.gz; \
-    cd /tmp; \
-    tar -zxf mysqld_exporter-0.12.1.linux-amd64.tar.gz; \
-    cp /tmp/mysqld_exporter-0.12.1.linux-amd64/mysqld_exporter /usr/local/bin/; \
-    chmod +x /usr/local/bin/mysqld_exporter; \
     chmod +rw /var/lib/mysql; \
     chmod 755 /etc/percona-server.conf.d
 EXPOSE 3306
