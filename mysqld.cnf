@@ -33,7 +33,7 @@ connect_timeout=5
 wait_timeout=3600
 skip-name-resolve
 interactive_timeout=28800
-max_allowed_packet=16M
+max_allowed_packet=64M
 thread_cache_size=128
 sort_buffer_size=4M
 bulk_insert_buffer_size=16M
