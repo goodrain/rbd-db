@@ -25,15 +25,14 @@ symbolic-links=0
 
 #log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
-log_warnings=0
 
 bind-address = 0.0.0.0
 max_connections=3000
 max_connect_errors=2000
 connect_timeout=10
-wait_timeout=10000
+wait_timeout=7200
+interactive_timeout=7200
 skip-name-resolve
-interactive_timeout=10000
 max_allowed_packet=128M
 thread_cache_size=128
 sort_buffer_size=4M
@@ -52,7 +51,7 @@ log_bin_index=/data/mysql/logbin.index
 log_timestamps = SYSTEM
 #sync_binlog=1
 max_binlog_size=500M
-expire_logs_days=7
+expire_logs_days=30
 
 # * InnoDB
 default_storage_engine=InnoDB
